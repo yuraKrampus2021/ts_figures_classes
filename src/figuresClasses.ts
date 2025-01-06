@@ -22,14 +22,15 @@ export class Triangle implements Figure {
     }
   }
 
-  getArea() {
+  getArea(): number {
     const s = (this.a + this.b + this.c) / 2;
     const area = Math.sqrt(s * (s - this.a) * (s - this.b) * (s - this.c));
-    return Math.floor(area * 100) / 100
+
+    return Math.floor(area * 100) / 100;
   }
 
   getInfo(): string {
-    return `A ${this.color} ${this.shape} - ${this.getArea()}`
+    return `A ${this.color} ${this.shape} - ${this.getArea()}`;
   }
 }
 
@@ -45,18 +46,19 @@ export class Circle implements Figure {
     }
   }
 
-  getArea() {
+  getArea(): number {
     const area: number = Math.PI * Math.pow(this.radius, 2);
-    return Math.floor(area * 100) / 100
+
+    return Math.floor(area * 100) / 100;
   }
 
   getInfo(): string {
-    return `A ${this.color} ${this.shape} - ${this.getArea()}`
+    return `A ${this.color} ${this.shape} - ${this.getArea()}`;
   }
 }
 
 export class Rectangle implements Figure {
-  shape: 'rectangle' = 'rectangle'
+  shape: 'rectangle' = 'rectangle';
 
   constructor(
     public color: 'red' | 'green' | 'blue',
@@ -68,33 +70,17 @@ export class Rectangle implements Figure {
     }
   }
 
-  getArea() {
+  getArea(): number {
     const area: number = this.width * this.height;
-    return Math.floor(area * 100) / 100
+
+    return Math.floor(area * 100) / 100;
   }
 
   getInfo(): string {
-    return `A ${this.color} ${this.shape} - ${this.getArea()}`
+    return `A ${this.color} ${this.shape} - ${this.getArea()}`;
   }
 }
 
 export function getInfo(figure: Triangle | Circle | Rectangle): string {
   return figure.getInfo();
 }
-
-// У нас є 3 типи фігур: трикутники, кола та прямокутники.
-
-// Напиши інтерфейс Figure і 3 класи, які його реалізують, щоб кожна фігура мала:
-
-// форму (трикутник, коло або прямокутник);
-// колір (червоний, зелений або синій);
-// метод getArea, який повертає площу фігури, округлену вниз до сотих.
-// Крім кольору, конструктори повинні приймати необхідні дані:
-
-// сторони a, b і c для трикутника;
-// радіус для кола;
-// ширину та висоту для прямокутника.
-// Конструктори повинні викидати new Error('your error message'), якщо:
-
-// будь-яка довжина <= 0;
-// найдовша сторона трикутника >= суми двох інших.
